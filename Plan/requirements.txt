@@ -1,0 +1,8 @@
+price data
+news data
+company data
+news fetch - web scrap
+financial data - web scrap
+news understand - nlp
+fundaments analysis
+technical analysis
