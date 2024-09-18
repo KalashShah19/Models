@@ -95,8 +95,9 @@ final_accuracy = np.mean(combined_accuracy)
 rmse = np.sqrt(mean_squared_error(real_stock_price, predicted_stock_price))
 
 print(f"RMSE: {rmse}")
-print(f"Directional Accuracy: {directional_accuracy * 100:.2f}%")
-print(f"Final Combined Accuracy (Price + Direction): {final_accuracy * 100:.2f}%")
+print(f"Directional Accuracy: {directional_accuracy * 100:.2f}%")  # Movement accuracy
+print(f"Price Accuracy (within 2% tolerance): {np.mean(price_accuracy) * 100:.2f}%")  # Price accuracy
+print(f"Final Combined Accuracy (Price + Direction): {final_accuracy * 100:.2f}%")  # Combined accuracy
 
 # Step 11: Plot the results
 plt.figure(figsize=(14,7))

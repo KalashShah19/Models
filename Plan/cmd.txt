@@ -1,1 +1,1 @@
-pip install yfinance tensorflow scikit-learn pandas numpy matplotlib openpyxl
+pip install yfinance tensorflow scikit-learn pandas numpy matplotlib openpyxl shap

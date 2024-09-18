@@ -25,7 +25,7 @@ def calculate_rsi(series, window=14):
     return rsi
 
 # Step 1: Download Vedanta stock data
-stock_data = pd.read_csv('../Data/reliance.csv') 
+stock_data = yf.download('VEDL.NS', start='2020-01-01', end='2024-09-12')
 
 # Step 2: Add Technical Indicators (SMA, RSI)
 stock_data['SMA50'] = stock_data['Close'].rolling(window=50).mean()
@@ -39,7 +39,7 @@ stock_data.dropna(inplace=True)
 # print(stock_data.head())
 # print(stock_data.shape)
 # print(stock_data)
-# stock_data.to_csv('D:/! Kalash/AI/Models/Stocks/Data/vedanta_test.csv')
+stock_data.to_csv('D:/! Kalash/AI/Models/Stocks/Data/vedanta_test.csv')
 
 # Drop NaN values created by rolling calculations
 stock_data = stock_data.dropna()
@@ -77,7 +77,7 @@ model.add(Dense(units=1))  # Predict the next closing price
 model.compile(optimizer='adam', loss='mean_squared_error')
 
 # Step 5: Train the model
-model.fit(X_train, Y_train, epochs=50, batch_size=64)
+model.fit(X_train, Y_train, epochs=50, batch_size=4)
 
 # Step 6: Make predictions
 predicted_stock_price = model.predict(X_test)
@@ -103,7 +103,7 @@ print(f"Accuracy Score: {accuracy}")
 plt.figure(figsize=(14,7))
 plt.plot(real_stock_price, color='blue', label='Real Stock Price')
 plt.plot(predicted_stock_price, color='red', label='Predicted Stock Price')
-plt.title('Reliance Stock Price Prediction with LSTM')
+plt.title('Vedanta Stock Price Prediction with LSTM')
 plt.xlabel('Time')
 plt.ylabel('Stock Price')
 plt.legend()

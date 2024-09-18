@@ -10,7 +10,7 @@ from sklearn.metrics import accuracy_score, mean_squared_error
 sys.stdout.reconfigure(encoding='utf-8')
 
 # Step 1: Load the stock data
-df = pd.read_csv('../Data/reliance.csv')  # You can replace this with live data fetching
+df = pd.read_csv('D:/! Kalash/AI/Models/Stocks/Data/reliance.csv')  # You can replace this with live data fetching
 df['Date'] = pd.to_datetime(df['Date'])
 df.set_index('Date', inplace=True)
 
@@ -61,6 +61,9 @@ plt.title('Reliance Price Prediction')
 plt.legend()
 plt.show()
 
+
+# Step 8: Calculate Accuracy Score for Stock Movement Prediction
+
 # Convert real and predicted stock prices to binary movement (1 = price increased, 0 = price decreased)
 real_movement = np.where(np.diff(real_stock_price.flatten()) > 0, 1, 0)
 predicted_movement = np.where(np.diff(predicted_stock_price.flatten()) > 0, 1, 0)
@@ -68,10 +71,8 @@ predicted_movement = np.where(np.diff(predicted_stock_price.flatten()) > 0, 1, 0
 # Calculate accuracy score
 accuracy = accuracy_score(real_movement, predicted_movement)
 
-# Step 8 : Calculate and print RMSE and accuracy
+# Step 7: Calculate and print RMSE and accuracy
 rmse = np.sqrt(mean_squared_error(real_stock_price, predicted_stock_price))
 
 print(f"RMSE: {rmse}")
 print(f"Accuracy Score: {accuracy}")
-result = "{:.2f}".format(accuracy * 100)
-print(f"Model is {result} % Accurate")
